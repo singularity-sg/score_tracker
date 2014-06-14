@@ -1,6 +1,8 @@
 (function () {
 
     console.log("Initialising barchart...");
+
+    var maxScore = 100;
     var margin = {top: 20, right: 30, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -27,7 +29,7 @@
 
     d3.json("/refresh", function(error, json) {
         x.domain(json.map(function(d) { return d.name; }));
-        y.domain([0,d3.max(json, function(d) { return d.score; })]);
+        y.domain([0,maxScore]);
        
         chart.append("g")
              .attr("class", "x axis")
@@ -57,7 +59,7 @@
     
     setInterval(function() {
         d3.json("/refresh", function(error,json) {
-            y.domain([0,d3.max(json, function(d) { return d.score; })]);
+            y.domain([0,maxScore]);
             chart.selectAll("g.axis").filter(".y").call(yAxis);
             chart.selectAll(".bar")
             .data(json)
