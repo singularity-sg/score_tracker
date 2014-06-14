@@ -35,6 +35,11 @@ app.use('/', routes);
 app.use('/refresh', refresh);
 app.use('/update', update);
 app.use('/scorecard', scorecard);
+app.use('/reset', function() {
+   for (var i in global.sheng_housescores) {
+        global.sheng_housescores[i].score = 0;
+   } 
+});
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

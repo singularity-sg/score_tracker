@@ -3,7 +3,7 @@
     console.log("Initialising barchart...");
 
     var maxScore = 20000;
-    var margin = {top: 20, right: 30, bottom: 30, left: 40},
+    var margin = {top: 20, right: 30, bottom: 30, left: 100},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -88,4 +88,17 @@ function houseAction(house, operator) {
             }
             
         });
+}
+
+function refreshScores() {
+    setInterval(function () {
+        d3.xhr("/refresh")
+            .header("Content-Type","application/json")
+            .get(function(error, data) {
+                d3.selectAll("table.controls")
+                .selectAll("span.text")
+                .data(JSON.parse(data.response))
+                .text(function(d) { return d.name + "(" + d.score + ")"; });
+            });
+    }, 1000);
 }
