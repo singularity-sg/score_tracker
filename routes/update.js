@@ -40,7 +40,7 @@ router.post('/', function(req, res) {
     }
     
     if (house_found) {
-        res.json(200, {'status':'ok'});
+        res.json(200, global.sheng_housescores);
     } else {
         res.json(400, {'status':'Unknown house:' + housename});
     };

@@ -79,7 +79,11 @@ function houseAction(house, operator) {
             } 
             if(data) {
                 console.log(data);
+                d3.selectAll("table.controls")
+                .selectAll("span.text")
+                .data(JSON.parse(data.response))
+                .text(function(d) { return d.name + "(" + d.score + ")"; });
             }
-            location.reload();
+            
         });
 }
