@@ -11,7 +11,7 @@ var scorecard = require('./routes/scorecard');
 
 var app = express();
 
-global.maxScore=100;
+global.maxScore=20000;
 global.sheng_housescores = [
     {'name':'Falcon', 'score':0, 'class':'falcon'},
     {'name':'Robin', 'score':0, 'class':'robin'},

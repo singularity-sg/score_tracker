@@ -2,7 +2,7 @@
 
     console.log("Initialising barchart...");
 
-    var maxScore = 100;
+    var maxScore = 20000;
     var margin = {top: 20, right: 30, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
