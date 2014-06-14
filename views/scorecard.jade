@@ -1,0 +1,19 @@
+extends responsive_layout
+
+block content
+    div#scorecard.container
+        div(class="one column")
+            table(class="controls")
+                thead
+                    tr
+                        th(colspan="4")
+                            h1= title 
+                tbody 
+                    each house in housescores
+                        tr(class=house.class)
+                            td(class="add") 
+                                button.add(onclick="javascript:houseAction('"+house.name+"','+')")='+'
+                            td(class=house.class,colspan="2") 
+                                span.text=house.name + "(" + house.score + ")"
+                            td(class="minus") 
+                                button.minus(onclick="javascript:houseAction('"+house.name+"','-')")='-'

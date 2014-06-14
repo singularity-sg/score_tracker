@@ -1,0 +1,60 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.chart text, span.text {
+    font: 20px sans-serif;
+    text-anchor: middle;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.falcon {
+    fill: green;
+    color: green;
+}
+
+.robin {
+    fill: purple;
+    color: purple;
+}
+
+.eagle {
+    fill: orange;
+    color: orange;
+}
+
+.swift {
+    fill: red;
+    color: red;
+}
+
+.hawk {
+    fill: yellow;
+    color: yellow;
+}
+.axis text {
+    font: 20px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.x.axis path {
+    display: none;
+}
+
+table.controls td {
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
