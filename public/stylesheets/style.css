@@ -53,7 +53,7 @@ a {
     display: none;
 }
 
-table.controls td {
+.controls div {
     text-align: center;
     vertical-align: middle;
 }

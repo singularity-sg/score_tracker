@@ -5,8 +5,10 @@ var router = express.Router();
 router.post('/', function(req, res) {
     console.info("House : " + req.body.house);
     console.info("Operator : " + req.body.operator);
+    console.info("Step : " + req.body.step);
     var operator = req.body.operator;
     var housename = req.body.house;
+    var step = parseInt(req.body.step);
     var house_found = false; 
     var housescores = global.sheng_housescores; 
     for (var i in housescores) {
@@ -15,16 +17,16 @@ router.post('/', function(req, res) {
             house_found = true;
             if (operator == '+') {
                 if(house.score < global.maxScore) {
-                    house.score += 10;
-                    console.log("Adding 10 to " + house);
+                    house.score += step;
+                    console.log("Adding " + step + " to " + house);
                 } else {
                     res.json(400, { 'status':'Unable to increment as the score is already' + global.maxScore });
                 }
             } else 
             if (operator == '-') {
                 if(house.score > 0) {
-                    house.score -= 10;
-                    console.log("Minus 10 to " + house);
+                    house.score -= step;
+                    console.log("Minus " + step + " to " + house);
                 } else {
                     res.json(400, { 'status':'Unable to decrement as it is already 0' });
                 }

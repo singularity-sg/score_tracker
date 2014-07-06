@@ -2,18 +2,21 @@ extends responsive_layout
 
 block content
     div#scorecard.container
-        div(class="one column")
-            table(class="controls")
-                thead
-                    tr
-                        th(colspan="4")
-                            h1= title 
-                tbody 
+        h1= title 
+        div(class="eight columns clearfix")
+            div(class="row")
+                div#slider(class="five columns")
+                div(class="one columns")
+                    input#points(type="text", readonly="readonly", value=10)
+                label(class="one columns", for="points").
+                    points
+            div(class="row")
+                div(class="eight columns controls")
                     each house in housescores
-                        tr(class=house.class)
-                            td(class="add") 
-                                button.add(onclick="javascript:houseAction('"+house.name+"','+')")='+'
-                            td(class=house.class,colspan="2") 
-                                span.text=house.name + "(" + house.score + ")"
-                            td(class="minus") 
+                        div(class="row " + house.class)
+                            div(class="one columns minus") 
                                 button.minus(onclick="javascript:houseAction('"+house.name+"','-')")='-'
+                            div(class="four columns " + house.class) 
+                                span.text=house.name + "(" + house.score + ")"
+                            div(class="one columns add") 
+                                button.add(onclick="javascript:houseAction('"+house.name+"','+')")='+'

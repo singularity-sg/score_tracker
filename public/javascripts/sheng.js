@@ -75,13 +75,13 @@
 function houseAction(house, operator) {
     d3.xhr("/update")
         .header("Content-Type","application/json")
-        .post(JSON.stringify({ 'house':house, 'operator':operator}), function(error, data) {
+        .post(JSON.stringify({ 'house':house, 'operator':operator, 'step':$("#points").val() }), function(error, data) {
             if(error) {
                 console.error(error);   
             } 
             if(data) {
                 console.log(data);
-                d3.selectAll("table.controls")
+                d3.selectAll(".controls")
                 .selectAll("span.text")
                 .data(JSON.parse(data.response))
                 .text(function(d) { return d.name + "(" + d.score + ")"; });
@@ -101,4 +101,18 @@ function refreshScores() {
                 .text(function(d) { return d.name + "(" + d.score + ")"; });
             });
     }, 1000);
+}
+
+function initSlider() {
+    console.log("Sliding down the slippery slopes...");
+    $("#slider").slider({ 
+        value: 10,
+        min: 10,
+        max: 100,
+        step: 10,
+        slide: function( event, ui ) {
+            $("#points").val(ui.value);
+        },
+        animate: "fast"
+    });
 }
